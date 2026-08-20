@@ -31,7 +31,7 @@ export function useTyping(phrases: string[], speed = 70, pause = 1400) {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const current = phrases[index % phrases.length];
+    const current = phrases[index % phrases.length] ?? "";
     if (!deleting && text === current) {
       const t = setTimeout(() => setDeleting(true), pause);
       return () => clearTimeout(t);
