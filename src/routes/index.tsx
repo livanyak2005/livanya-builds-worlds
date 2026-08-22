@@ -297,7 +297,7 @@ function Hero() {
         <div className="justify-self-center">
           <div className="rounded-full bg-gradient-to-br from-accent to-teal p-1.5 shadow-[var(--shadow-lift)]">
             <img
-              src={profileAsset.url}
+              src={profileImg}
               alt="Portrait of Livanya K"
               width={320}
               height={320}
