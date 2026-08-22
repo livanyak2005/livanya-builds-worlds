@@ -16,7 +16,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { useReveal, useTyping } from "@/components/portfolio/hooks";
-import profileAsset from "@/assets/livanya.jpg.asset.json";
+import profileImg from "@/assets/livanya.jpg";
 import workspaceImg from "@/assets/workspace.jpg";
 import projectImg from "@/assets/project-placement.jpg";
 
