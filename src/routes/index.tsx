@@ -378,6 +378,10 @@ function Portfolio() {
           </div>
         </Section>
 
+        <PaperPresentation />
+
+
+
         <Section id="education" eyebrow="Education" title="Academic journey">
           <ol className="relative space-y-8 border-l border-border pl-6 md:pl-8">
             {EDUCATION.map((item) => (
