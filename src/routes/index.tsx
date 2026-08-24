@@ -314,7 +314,91 @@ function ContactForm() {
     </form>
   );
 }
+function ContactForm() {
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    formData.append("access_key", "c05a1ed7-c0e5-4784-8810-94c810df6b74");
+    formData.append("subject", "New Portfolio Contact Message");
+    formData.append("from_name", "Livanya Portfolio");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSent(true);
+        form.reset();
+      } else {
+        alert("Message could not be sent. Please try again.");
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit} className="surface-card space-y-4 p-6">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="block text-sm font-medium">
+          Name
+          <input
+            required
+            name="name"
+            className="mt-1.5 w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+          />
+        </label>
+
+        <label className="block text-sm font-medium">
+          Email
+          <input
+            required
+            type="email"
+            name="email"
+            className="mt-1.5 w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+          />
+        </label>
+      </div>
+
+      <label className="block text-sm font-medium">
+        Message
+        <textarea
+          required
+          name="message"
+          rows={5}
+          className="mt-1.5 w-full resize-none rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+        />
+      </label>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-1 disabled:opacity-60"
+      >
+        {loading ? "Sending..." : "Send Message"} <ArrowRight size={16} />
+      </button>
+
+      {sent && (
+        <p className="text-sm font-medium text-teal">
+          Message sent successfully! Thank you for contacting me.
+        </p>
+      )}
+    </form>
+  );
+}
 function SkillBar({ name, level }: { name: string; level: number }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
