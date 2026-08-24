@@ -1,21 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   Github,
   Linkedin,
   Mail,
   Phone,
-  Download,
+  FileText,
   ArrowRight,
   GraduationCap,
   Briefcase,
-  Award,
   Menu,
   X,
   ExternalLink,
   MapPin,
 } from "lucide-react";
 import { useReveal, useTyping } from "@/components/portfolio/hooks";
+import { Section } from "@/components/portfolio/Section";
+import { Certifications } from "@/components/portfolio/Certifications";
+import { Workshops } from "@/components/portfolio/Workshops";
+import { PaperPresentation } from "@/components/portfolio/PaperPresentation";
 import profileImg from "@/assets/livanya.jpg";
 import workspaceImg from "@/assets/workspace.jpg";
 import projectImg from "@/assets/project-placement.jpg";
@@ -48,6 +51,7 @@ const NAV = [
   ["Internships", "internships"],
   ["Projects", "projects"],
   ["Certifications", "certifications"],
+  ["Workshops", "workshops"],
   ["Skills", "skills"],
   ["Contact", "contact"],
 ] as const;
@@ -100,32 +104,6 @@ const INTERNSHIPS = [
   },
 ];
 
-const CERTS = [
-  {
-    title: "National Workshop on MERN Stack Development",
-    meta: "Jamal Mohamed College & Holy Cross College · June 2026",
-  },
-  { title: "Java", meta: "Kalaimagal Computers · 2026" },
-  { title: "PGDCA", meta: "Apollo Computer Education Ltd. · 2025" },
-  { title: "Soft Skills", meta: "Unnathi Foundation" },
-  {
-    title: 'Paper Presentation — "Next Gen AI: Innovations and Impacts for Shaping the Future"',
-    meta: "Holy Cross College · 2025",
-  },
-  {
-    title: "Typewriting — English & Tamil (Junior & Senior)",
-    meta: "First Class with Distinction",
-  },
-  {
-    title: "Intel Easy Steps Basic Course",
-    meta: "Intel & Digital Empowerment Foundation",
-  },
-  {
-    title: "Mathematics Olympiad 2023 (Inter-Collegiate Meet)",
-    meta: "St. Joseph's College, Tiruchirappalli",
-  },
-  { title: "Certification of Merit in Mathematics", meta: "Achievement" },
-];
 
 const TECH_SKILLS = [
   { name: "C", level: 80 },
@@ -139,31 +117,6 @@ const TECH_SKILLS = [
 
 const SOFT_SKILLS = ["Teamwork", "Time Management", "Typing"];
 
-function Section({
-  id,
-  eyebrow,
-  title,
-  children,
-}: {
-  id: string;
-  eyebrow: string;
-  title: string;
-  children: ReactNode;
-}) {
-  const { ref, visible } = useReveal<HTMLElement>();
-  return (
-    <section
-      id={id}
-      ref={ref}
-      data-visible={visible}
-      className="reveal mx-auto w-full max-w-6xl px-5 py-20 md:py-28"
-    >
-      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-bold md:text-4xl">{title}</h2>
-      <div className="mt-10">{children}</div>
-    </section>
-  );
-}
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -277,11 +230,12 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="/resume-livanya-k.txt"
-              download
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform duration-300 hover:-translate-y-1"
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
             >
-              <Download size={16} /> Download Resume
+              <FileText size={16} /> View Resume
             </a>
             <a
               href="#contact"
@@ -424,6 +378,10 @@ function Portfolio() {
           </div>
         </Section>
 
+        <PaperPresentation />
+
+
+
         <Section id="education" eyebrow="Education" title="Academic journey">
           <ol className="relative space-y-8 border-l border-border pl-6 md:pl-8">
             {EDUCATION.map((item) => (
@@ -503,19 +461,9 @@ function Portfolio() {
           </article>
         </Section>
 
-        <Section id="certifications" eyebrow="Workshops & Certifications" title="Learning beyond class">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {CERTS.map((c) => (
-              <article key={c.title} className="surface-card p-5">
-                <span className="inline-grid h-9 w-9 place-items-center rounded-lg bg-secondary text-accent">
-                  <Award size={17} />
-                </span>
-                <h3 className="mt-3 text-sm font-semibold leading-snug">{c.title}</h3>
-                <p className="mt-1.5 text-xs text-muted-foreground">{c.meta}</p>
-              </article>
-            ))}
-          </div>
-        </Section>
+        <Certifications />
+
+        <Workshops />
 
         <Section id="skills" eyebrow="Skills" title="What I work with">
           <div className="grid gap-10 md:grid-cols-2">
