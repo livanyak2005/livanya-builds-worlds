@@ -264,56 +264,7 @@ function Hero() {
   );
 }
 
-function ContactForm() {
-  const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSent(true);
-  };
-  return (
-    <form onSubmit={onSubmit} className="surface-card space-y-4 p-6">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm font-medium">
-          Name
-          <input
-            required
-            name="name"
-            className="mt-1.5 w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-accent"
-          />
-        </label>
-        <label className="block text-sm font-medium">
-          Email
-          <input
-            required
-            type="email"
-            name="email"
-            className="mt-1.5 w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-accent"
-          />
-        </label>
-      </div>
-      <label className="block text-sm font-medium">
-        Message
-        <textarea
-          required
-          name="message"
-          rows={5}
-          className="mt-1.5 w-full resize-none rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-accent"
-        />
-      </label>
-      <button
-        type="submit"
-        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-1"
-      >
-        Send Message <ArrowRight size={16} />
-      </button>
-      {sent && (
-        <p className="text-sm font-medium text-teal">
-          Thanks! Your message is noted — reach out directly at livanya15@gmail.com for a faster reply.
-        </p>
-      )}
-    </form>
-  );
-}
+
 function ContactForm() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
