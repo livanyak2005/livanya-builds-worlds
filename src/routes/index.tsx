@@ -19,6 +19,7 @@ import { Section } from "@/components/portfolio/Section";
 import { Certifications } from "@/components/portfolio/Certifications";
 import { Workshops } from "@/components/portfolio/Workshops";
 import { PaperPresentation } from "@/components/portfolio/PaperPresentation";
+import { Interests } from "@/components/portfolio/Interests";
 import profileImg from "@/assets/livanya.jpg";
 import workspaceImg from "@/assets/workspace.jpg";
 import projectImg from "@/assets/project-placement.jpg";
