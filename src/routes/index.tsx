@@ -528,6 +528,8 @@ function Portfolio() {
           </div>
         </Section>
 
+        <Interests />
+
         <Section id="contact" eyebrow="Contact" title="Let's work together">
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
             <div className="surface-card space-y-5 p-6">
