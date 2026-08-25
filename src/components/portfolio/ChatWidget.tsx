@@ -72,7 +72,7 @@ const FAQS: Faq[] = [
   },
 ];
 
-const QUICK = ["Education", "Internships", "Skills", "Projects", "Contact"];
+const QUICK = ["Education", "Internships", "Skills", "Projects", "About", "Interests", "Contact"];
 
 type Msg = { from: "bot" | "user"; text: string };
 
