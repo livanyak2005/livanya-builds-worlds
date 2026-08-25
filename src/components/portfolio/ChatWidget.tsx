@@ -60,13 +60,19 @@ const FAQS: Faq[] = [
   {
     key: "about",
     label: "About",
-    keywords: ["about", "who", "yourself", "introduce", "hello", "hi", "hey"],
+    keywords: ["about", "who", "yourself", "introduce", "hello", "hi", "hey", "background"],
     answer:
-      "Hi! I'm Livanya's portfolio assistant. She's a Mathematics graduate now doing her MCA, focused on web development, UI/UX and data analytics.",
+      "I'm Livanya K, a Mathematics graduate now pursuing my Master of Computer Applications at Holy Cross College. Along the way I've done internships in Internet of Things and Data Analytics, learning to turn raw signals and datasets into something people can actually use. Today I focus on building clean, functional web applications — logical structure from my maths background, careful detail from my design interest.",
+  },
+  {
+    key: "interests",
+    label: "Interests",
+    keywords: ["interest", "interests", "hobby", "passionate", "ui design", "ux", "frontend", "web design"],
+    answer: "I'm passionate about UI Design, Frontend Development, Web Design, and User Experience (UX).",
   },
 ];
 
-const QUICK = ["Education", "Internships", "Skills", "Projects", "Contact"];
+const QUICK = ["Education", "Internships", "Skills", "Projects", "About", "Interests", "Contact"];
 
 type Msg = { from: "bot" | "user"; text: string };
 
