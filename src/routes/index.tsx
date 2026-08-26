@@ -425,7 +425,7 @@ function Portfolio() {
               loading="lazy"
               width={1024}
               height={768}
-              className="w-full rounded-2xl border border-border shadow-[var(--shadow-soft)]"
+              className="w-full rounded-2xl border border-border shadow-[var(--shadow-soft)] transition-transform duration-500 hover:scale-[1.02]"
             />
           </div>
         </Section>
