@@ -23,9 +23,9 @@ export function Workshops() {
         {WORKSHOPS.map((w) => (
           <article
             key={w.title}
-            className="surface-card flex h-full flex-col p-5 transition-transform duration-300 hover:scale-[1.02]"
+            className="surface-card tilt-card group flex h-full flex-col p-5"
           >
-            <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-secondary text-teal">
+            <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-secondary text-teal transition-transform duration-300 group-hover:scale-110 group-active:scale-110">
               <Presentation size={18} />
             </span>
             <h3 className="mt-4 text-sm font-semibold leading-snug">{w.title}</h3>

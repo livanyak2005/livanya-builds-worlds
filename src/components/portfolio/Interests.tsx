@@ -31,9 +31,9 @@ export function Interests() {
         {INTERESTS.map(({ name, Icon, text }) => (
           <article
             key={name}
-            className="surface-card flex h-full flex-col p-5 transition-transform duration-300 hover:scale-[1.02]"
+            className="surface-card tilt-card group flex h-full flex-col p-5"
           >
-            <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-secondary text-accent">
+            <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-secondary text-accent transition-transform duration-300 group-hover:scale-110 group-active:scale-110">
               <Icon size={18} />
             </span>
             <h3 className="mt-4 text-sm font-semibold leading-snug">{name}</h3>
