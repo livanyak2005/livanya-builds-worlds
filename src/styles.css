@@ -138,3 +138,102 @@
     border-color: transparent;
   }
 }
+
+/* ---------- Animated background (fixed, behind all content) ---------- */
+@utility animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(45rem 30rem at 12% 8%, oklch(0.34 0.11 268 / 0.16), transparent 60%),
+    radial-gradient(38rem 26rem at 88% 18%, oklch(0.7 0.16 30 / 0.14), transparent 62%),
+    radial-gradient(42rem 30rem at 70% 88%, oklch(0.66 0.1 195 / 0.14), transparent 60%),
+    radial-gradient(36rem 26rem at 20% 92%, oklch(0.4 0.13 275 / 0.12), transparent 62%);
+  background-size: 180% 180%;
+  animation: mesh-drift 26s ease-in-out infinite alternate;
+}
+
+@utility grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(to right, oklch(0.34 0.11 268 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.34 0.11 268 / 0.05) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  mask-image: radial-gradient(120% 90% at 50% 0%, black, transparent 78%);
+  animation: grid-pan 40s linear infinite;
+}
+
+@keyframes mesh-drift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%;
+  }
+  100% {
+    background-position:
+      18% 12%,
+      82% 14%,
+      78% 88%,
+      14% 84%;
+  }
+}
+
+@keyframes grid-pan {
+  to {
+    background-position:
+      3.5rem 3.5rem,
+      3.5rem 3.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg,
+  .grid-overlay {
+    animation: none;
+  }
+}
+
+/* ---------- Interactive media cards ---------- */
+@utility tilt-card {
+  transform-style: preserve-3d;
+  transition:
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+
+  &:hover {
+    transform: perspective(900px) rotateX(1.5deg) rotateY(-2deg) translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@media (hover: none) {
+  .tilt-card:hover {
+    transform: none;
+  }
+  .tilt-card:active {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility media-zoom {
+  overflow: hidden;
+
+  & img {
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &:hover img,
+  &:active img,
+  &:focus-within img {
+    transform: scale(1.06);
+  }
+}
