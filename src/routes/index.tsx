@@ -352,8 +352,14 @@ function ContactForm() {
       </button>
 
       {sent && (
-        <p className="text-sm font-medium text-teal">
+        <p role="status" className="text-sm font-medium text-teal">
           Message sent successfully! Thank you for contacting me.
+        </p>
+      )}
+
+      {error && (
+        <p role="alert" className="text-sm font-medium text-destructive">
+          {error}
         </p>
       )}
     </form>
