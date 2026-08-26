@@ -371,7 +371,9 @@ function SkillBar({ name, level }: { name: string; level: number }) {
 
 function Portfolio() {
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
+      <div aria-hidden className="animated-bg" />
+      <div aria-hidden className="grid-overlay" />
       <Navbar />
       <main>
         <Hero />
