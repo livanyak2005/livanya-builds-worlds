@@ -460,15 +460,24 @@ function Portfolio() {
         </Section>
 
         <Section id="projects" eyebrow="Projects" title="Things I've built">
-          <article className="surface-card overflow-hidden md:grid md:grid-cols-2">
-            <img
-              src={projectImg}
-              alt="Placement Training Portal dashboard mockup"
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="h-56 w-full object-cover object-left-top md:h-full"
-            />
+          <article className="surface-card tilt-card group overflow-hidden md:grid md:grid-cols-2">
+            <div className="media-zoom relative h-56 w-full md:h-full">
+              <img
+                src={projectImg}
+                alt="Placement Training Portal dashboard mockup"
+                loading="lazy"
+                width={1200}
+                height={800}
+                className="h-56 w-full object-cover object-left-top md:h-full"
+              />
+              <div className="pointer-events-none absolute inset-0 flex items-end bg-[image:var(--gradient-hero)] p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-90 group-focus-within:opacity-90 group-active:opacity-90">
+                <p className="text-sm font-medium text-primary-foreground">
+                  Batch management, assessment tracking and shared training resources — built with
+                  HTML, PHP and MySQL.
+                </p>
+              </div>
+            </div>
+
             <div className="p-6 md:p-8">
               <h3 className="text-xl font-semibold">Placement Training Portal</h3>
               <p className="mt-3 text-sm text-muted-foreground">
