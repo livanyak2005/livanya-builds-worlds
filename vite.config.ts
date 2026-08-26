@@ -7,8 +7,6 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  base: '/livanya-builds-worlds/',
-
   tanstackStart: {
     server: { entry: "server" },
   },
