@@ -266,18 +266,25 @@ function Hero() {
 }
 
 
+const WEB3FORMS_KEY =
+  (import.meta.env["VITE_WEB3FORMS_ACCESS_KEY"] as string | undefined) ??
+  "c05a1ed7-c0e5-4784-8810-94c810df6b74";
+
 function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setSent(false);
+    setError(null);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    formData.append("access_key", "c05a1ed7-c0e5-4784-8810-94c810df6b74");
+    formData.append("access_key", WEB3FORMS_KEY);
     formData.append("subject", "New Portfolio Contact Message");
     formData.append("from_name", "Livanya Portfolio");
 
@@ -287,20 +294,21 @@ function ContactForm() {
         body: formData,
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as { success?: boolean; message?: string };
 
-      if (result.success) {
+      if (response.ok && result.success) {
         setSent(true);
         form.reset();
       } else {
-        alert("Message could not be sent. Please try again.");
+        setError(result.message ?? "Message could not be sent. Please try again.");
       }
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
+    } catch {
+      setError("Network error — please check your connection and try again.");
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <form onSubmit={onSubmit} className="surface-card space-y-4 p-6">
